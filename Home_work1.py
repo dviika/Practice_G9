@@ -7,7 +7,7 @@ for element in list_of_numbers:
 print("Task #1. Sum of all elements:", sum_of_all)
 
 ######################################################################################
-# Task 2 - - create a list with duplicate number and print sum of all Unique elements
+# Task 2 - create a list with duplicate number and print sum of all Unique elements
 elList = [7, 1, 2, 1, 2, 3, 4, 5, 1, 1, 2, 5, 6, 8, 9, 9]
 
 uniqueList = []

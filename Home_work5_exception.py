@@ -8,7 +8,7 @@
 
 def accept_number():
     try:
-        int(input("Enter a number here "))
+        int(input("Enter a number here: "))
     except:
         print('Entered data is not valid')
 
@@ -39,7 +39,7 @@ concatenate('ty', 25)
 
 def enter_int():
     while True:
-        value = input("Please enter integer value ")
+        value = input("Please enter integer value: ")
         try:
             int(value)
             print('Thank you for entering correct value')
