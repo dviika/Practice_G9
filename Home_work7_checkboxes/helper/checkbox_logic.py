@@ -2,27 +2,28 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 
 
-def select_radio_button(driver: WebDriver, name: str):  # acept chrome driver and name
-    locator = f'//label[text()="{name}"]//ancestor::div[contains(@class, "radio")]'
+def radio_button(driver: WebDriver, name: str):  # acept chrome driver and name
+    locator = f'//label[text()="{name}"]//ancestor::div[contains(@class, "radio")]/input'
+    element_radio_button = driver.find_element(By.XPATH, locator)
+    return element_radio_button
+
+
+def radio_button_label(driver: WebDriver, name: str):
+    locator = f'//label[text()="{name}"]//ancestor::div[contains(@class, "radio")]/label'
+    element_label = driver.find_element(By.XPATH, locator)
+    return element_label
+
+
+def selected_text(driver: WebDriver):
     locator_selected_text = '//p[@class="mt-3"]'
+    element_selected_text = driver.find_element(By.XPATH, locator_selected_text)
+    return element_selected_text
+
+
+def selected_name(driver: WebDriver, name: str):
     locator_selected_name = f'//span[@class="text-success" and text() = "{name}"]'
-    radio_button_switch = f'{locator}/input'
-    radio_button_text = f'{locator}/label'
-
-    element_input = driver.find_element(By.XPATH, radio_button_switch)
-    element_label = driver.find_element(By.XPATH, radio_button_text)
-    if name == 'No':
-        driver.execute_script('arguments[0].removeAttribute("disabled");', element_input)
-        element_label.click()
-        assert element_input.is_selected(), "'No' radio button is not selected"
-    else:
-        if not element_input.is_selected():
-            element_label.click()
-
-        element_selected_text = driver.find_element(By.XPATH, locator_selected_text)
-        element_selected_name = driver.find_element(By.XPATH, locator_selected_name)
-        assert element_selected_text.is_displayed(), "'You have selected' text is not displayed"
-        assert element_selected_name.text == name, f"Selected radio button is incorrect {name}"
+    element_selected_name = driver.find_element(By.XPATH, locator_selected_name)
+    return element_selected_name
 
 
 def generate_dictionary_of_radio_but_statuses(driver: WebDriver):

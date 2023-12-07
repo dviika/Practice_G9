@@ -17,5 +17,6 @@ def chrome(request):
     driver = Chrome()
     if request.cls:
         request.cls.driver = driver
-    yield  # пeредає усправління в той тест тіло тесту або тіло функції
+    yield driver
+    # пeредає усправління в той тест тіло тесту або тіло функції
     driver.quit()  # setup after test)
