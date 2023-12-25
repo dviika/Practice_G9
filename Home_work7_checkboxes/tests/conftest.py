@@ -11,7 +11,7 @@ def simple_fixture_1():
 
 
 @pytest.fixture(scope='class')  # if you specified this fixture it means in class we will run browser
-def chrome(request):
+def chrome_1(request):
     # service_object = Service("/Users/oleksandra/PycharmProjects/chromedriver_win32/chromedriver.exe")
     # driver_go = webdriver.Chrome(service=service_object)
     driver = Chrome()
