@@ -7,6 +7,22 @@ from selenium.webdriver.support.select import Select
 
 class PageDatePicker:
     URL = 'https://demoqa.com/date-picker'
+    MONTHS = {
+        'January': 1,
+        'February': 2,
+        'March': 3,
+        'April': 4,
+        'May': 5,
+        'June': 6,
+        'July': 7,
+        'August': 8,
+        'September': 9,
+        'October': 10,
+        'November': 11,
+        'December': 12,
+    }
+    locator_button_previous = (By.XPATH, '//button[contains(@class,"previous")]')
+    locator_button_next = (By.XPATH, '//button[contains(@class,"next")]')
 
     def __init__(self, driver: WebDriver):
         self.__driver = driver
@@ -91,6 +107,38 @@ class PageDatePicker:
                     previous_button.click()
             else:
                 pass
+
+    def click_on_next_prev_btn(self, direction, count):
+        previous_button = self.__driver.find_element(*self.locator_button_previous)
+        next_button = self.__driver.find_element(*self.locator_button_next)
+
+        if direction == 'next':
+            for _ in range(count):
+                next_button.click()
+        elif direction == 'previous':
+            for _ in range(count):
+                previous_button.click()
+        else:
+            print("Direction is invalid")
+
+
+    def scroll_to_target_month_within_year(self, target_date):
+        target_year = int(target_date.split('/')[-1])
+        target_month = int(target_date.split('/')[0])
+        current_month_in_picker_locator = (By.XPATH, '//div[@class="react-datepicker__header"]/div[contains(@class,"current-month")]')
+        self.scroll_to_target_year(target_year)
+        current_month = self.__driver.find_element(*current_month_in_picker_locator).text.split(' ')[0]
+        print("Scrolling from month:", current_month)
+        if target_month > self.MONTHS[current_month]:
+            count = target_month - self.MONTHS[current_month]
+            self.click_on_next_prev_btn(direction='next', count=count)
+        elif target_month < self.MONTHS[current_month]:
+            count = self.MONTHS[current_month] - target_month
+            self.click_on_next_prev_btn(direction='previous', count=count)
+        else:
+            print("Can't scroll through months")
+        current_month = self.__driver.find_element(*current_month_in_picker_locator).text.split(' ')[0]
+        print("Month to which we scrolled:", current_month)
 
 
 

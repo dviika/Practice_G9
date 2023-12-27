@@ -24,7 +24,13 @@ class TestDatePicker:
         page = PageDatePicker(chrome)
         page.open()
         page.open_date_picker()
-        
         target_year = int(target_date.split('/')[-1])
         page.scroll_to_target_year(target_year)
         print(page.get_current_month_within_current_year())
+
+    def test_scroll_to_month(self, chrome):
+        target_date = '4/5/2019'
+        page = PageDatePicker(chrome)
+        page.open()
+        page.open_date_picker()
+        page.scroll_to_target_month_within_year(target_date)
