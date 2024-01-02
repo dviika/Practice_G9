@@ -1,0 +1,4 @@
+first_pagination_locator = '//li[@class="pagination__item"]/a[contains(@class,"pagination__link pagination__link--active")]'
+previous_btn_at_the_bottom_locator = '//div[@class="pagination ng-star-inserted"]/a[contains(@title,"До попередньої сторінки")]'  # '//div[@class="pagination ng-star-inserted"]/a[contains(@class,"button button--gray button")]'
+next_btn_at_the_bottom_locator = '//div[@class="pagination ng-star-inserted"]/a[contains(@title,"До наступної сторінки")]'  # '//div[@class="pagination ng-star-inserted"]/a[contains(@class,"pagination__direction--forward")]'
+second_paginator_locator = '//div[@class="pagination ng-star-inserted"]//a[contains(text(),"2")]'
