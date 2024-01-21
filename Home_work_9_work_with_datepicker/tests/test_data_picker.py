@@ -33,3 +33,4 @@ class testDatePicker:
         page.open()
         page.open_date_picker()
         page.scroll_to_target_month_within_year(target_date)
+
