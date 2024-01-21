@@ -1,0 +1,8 @@
+# created by virtualenv automatically
+.pytest_cache
+venv/
+.pyvenv.cfg
+__pycache__/
+jenkins_home/
+attachments.zip
+home_work_10_rozetka.7z

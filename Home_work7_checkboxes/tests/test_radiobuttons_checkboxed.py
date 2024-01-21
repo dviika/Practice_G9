@@ -1,5 +1,5 @@
 import pytest
-from Home_work7_checkboxes.helper.checkbox_logic import radio_button, radio_button_label, selected_name, selected_text, \
+from home_work7_checkboxes.helper.checkbox_logic import radio_button, radio_button_label, selected_name, selected_text, \
     generate_dictionary_of_radio_but_statuses
 @pytest.mark.usefixtures('chrome')
 class TestRadioButtons:
